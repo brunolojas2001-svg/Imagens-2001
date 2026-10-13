@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Imagens Lojas 2001 - Processador HD Otimizado</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<!-- Fontes da marca (Oswald = títulos · Mulish/Roboto = texto) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Ícones -->
+<script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+<style>
+:root{
+  /* ===== OFICIAIS DA MARCA ===== */
+  --vermelho:#EC3237;
+  --azul:#006CB5;
+  --branco:#FFFFFF;
+  --cinza:#EBEBEB;
+  /* ===== ESCALAS SECUNDÁRIAS ===== */
+  --vermelho-100:#FBD6D7; --vermelho-600:#B12629;
+  --azul-50:#E6F2FB; --azul-100:#CCE2F0; --azul-200:#99C4E1; --azul-300:#66A7D3; --azul-600:#005188; --azul-800:#00365B;
+  /* ===== APOIO (WEB) ===== */
+  --azul-escuro:#004A80;
+  --bg:#F5F6F8;
+  --surface:#FFFFFF;
+  --border:#E0E3E8;
+  --text:#1A1A1A;
+  --muted:#6B7280;
+  --muted-soft:#9CA3AF;
+  --verde-ok:#28A745;
+  --amarelo-warn:#FFC107;
+  --laranja-warn:#FD7E14;
+  --radius-ctrl:6px;
+  --radius-card:8px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+  font-family:'Mulish','Roboto',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+}
+
+h1,h2,h3,.os{ font-family:'Oswald',sans-serif; }
+
+.lucide{ width:16px; height:16px; flex-shrink:0; }
+
+/* ===== CABEÇALHO ===== */
+.header{
+  background:var(--surface);
+  border-bottom:3px solid var(--azul);
+  padding:16px 32px;
+}
+
+.header-container{
+  max-width:1400px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.brand{ display:flex; align-items:center; gap:18px; }
+.brand .logo svg{ height:46px; width:auto; display:block; }
+.brand .divisor{ width:1px; height:44px; background:var(--border); }
+
+.brand-text h1{
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:24px;
+  line-height:1.15;
+  color:var(--text);
+}
+
+.brand-text p{
+  font-family:'Oswald',sans-serif;
+  font-weight:500;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+.active-configs{ display:flex; gap:8px; flex-wrap:wrap; }
+
+/* ===== BADGES ===== */
+.badge, .config-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:11px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:4px 10px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+.config-badge{ background:var(--azul-50); color:var(--muted); }
+.config-badge span{ color:var(--azul); }
+.badge-azul{ background:var(--azul-50); color:var(--azul); }
+.badge-ok{ background:#E8F5E9; color:var(--verde-ok); }
+.badge-warn{ background:#FFF8E1; color:var(--laranja-warn); }
+
+/* ===== CONTEÚDO ===== */
+.main-container{
+  max-width:1400px;
+  margin:24px auto;
+  padding:0 32px;
+}
+
+.card-box, .workspace{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-card);
+  padding:24px;
+}
+
+.kicker{
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--azul);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:14px;
+}
+
+.upload-box{
+  display:block;
+  border:1.5px dashed var(--border);
+  background:var(--surface);
+  border-radius:var(--radius-card);
+  padding:44px 24px;
+  text-align:center;
+  cursor:pointer;
+  transition:.15s;
+}
+.upload-box:hover, .upload-box.active{ border-color:var(--azul); background:var(--azul-50); }
+
+.upload-icon{
+  width:52px; height:52px;
+  border-radius:50%;
+  background:var(--azul-50);
+  color:var(--azul);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:12px;
+}
+.upload-icon .lucide{ width:26px; height:26px; }
+
+.upload-box h2{
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:20px;
+  margin-bottom:6px;
+  color:var(--text);
+}
+.upload-box p{ color:var(--muted); font-size:14px; max-width:720px; margin:0 auto; }
+
+.controls-bar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.action-group{ display:flex; gap:10px; flex-wrap:wrap; }
+
+/* ===== BOTÕES ===== */
+button, .btn{
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  padding:9px 18px;
+  border-radius:var(--radius-ctrl);
+  border:1.5px solid var(--azul);
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  transition:background .15s, color .15s, border-color .15s;
+  white-space:nowrap;
+}
+button:focus-visible{ outline:2px solid var(--azul); outline-offset:2px; }
+
+.btn-primary{ background:var(--azul); color:#fff; }
+.btn-primary:hover{ background:var(--azul-escuro); border-color:var(--azul-escuro); }
+
+.btn-secondary{ background:#fff; color:var(--azul); }
+.btn-secondary:hover{ background:var(--azul-50); }
+
+.btn-danger{ background:var(--vermelho); border-color:var(--vermelho); color:#fff; }
+.btn-danger:hover{ background:var(--vermelho-600); border-color:var(--vermelho-600); }
+
+.folder-status{
+  font-size:13px;
+  color:var(--muted);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.folder-status strong{ color:var(--verde-ok); display:inline-flex; align-items:center; gap:4px; }
+.folder-status em{ font-style:normal; font-weight:600; color:var(--text); }
+
+/* ===== GALERIA ===== */
+.gallery-section{ margin-top:28px; }
+
+.section-title{
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:20px;
+  margin-bottom:18px;
+  color:var(--text);
+  border-left:4px solid var(--azul);
+  padding-left:12px;
+  line-height:1.2;
+}
+
+.product-group-block{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-left:4px solid var(--azul);
+  border-radius:var(--radius-card);
+  padding:20px;
+  margin-bottom:16px;
+}
+
+.product-group-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  border-bottom:1px solid var(--border);
+  padding-bottom:12px;
+  margin-bottom:18px;
+}
+
+.product-group-title{
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:16px;
+  color:var(--azul);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.product-group-title b{ font-family:'Roboto',monospace; color:var(--text); font-weight:700; }
+
+.single-products-container{
+  background:var(--surface);
+  border:1.5px dashed var(--border);
+  border-radius:var(--radius-card);
+  padding:20px;
+  margin-top:28px;
+  margin-bottom:16px;
+}
+
+.single-products-title{
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:16px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(230px,1fr));
+  gap:16px;
+}
+
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius-card);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:border-color .15s;
+}
+.card:hover{ border-color:var(--azul); }
+
+.card-preview{
+  height:180px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--bg);
+  padding:12px;
+  cursor:zoom-in;
+}
+
+.card img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  margin:auto;
+  transition:transform .2s ease;
+}
+.card-preview:hover img{ transform:scale(1.04); }
+
+.card-footer{
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:var(--surface);
+  flex-grow:1;
+  justify-content:space-between;
+  border-top:1px solid var(--border);
+}
+
+.file-name{
+  font-family:'Roboto',monospace;
+  font-size:12px;
+  font-weight:700;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  color:var(--text);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+.file-name .lucide{ color:var(--muted); width:14px; height:14px; }
+
+.badge-hd{ align-self:flex-start; }
+
+.btn-download-item{ width:100%; padding:7px 12px; font-size:12px; }
+
+.empty-state{
+  padding:48px 20px;
+  text-align:center;
+  border:1.5px dashed var(--border);
+  border-radius:var(--radius-card);
+  background:var(--surface);
+  color:var(--muted);
+  font-size:13px;
+}
+.empty-state .t{ font-family:'Oswald',sans-serif; font-weight:600; font-size:15px; color:var(--text); margin-top:8px; }
+.empty-state .lucide{ width:40px; height:40px; color:var(--muted-soft); }
+
+/* ===== VISUALIZADOR ===== */
+.clean-view-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(26,26,26,.96);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .2s ease;
+  z-index:2000;
+}
+.clean-view-overlay.active{ opacity:1; pointer-events:all; }
+
+.clean-top-indicator{
+  position:absolute;
+  top:20px;
+  left:50%;
+  transform:translateX(-50%);
+  font-family:'Oswald',sans-serif;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--azul-100);
+  background:rgba(0,54,91,.6);
+  border:1px solid var(--azul-600);
+  padding:4px 16px;
+  border-radius:20px;
+  user-select:none;
+  z-index:2020;
+}
+
+.btn-clean-close-top{
+  position:absolute;
+  top:16px;
+  right:20px;
+  background:transparent;
+  color:#fff;
+  border:1.5px solid var(--azul-300);
+  width:40px;
+  height:40px;
+  padding:0;
+  border-radius:50%;
+  z-index:2020;
+}
+.btn-clean-close-top:hover{ background:var(--vermelho); border-color:var(--vermelho); }
+
+.clean-view-stage{
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px;
+  overflow:hidden;
+}
+
+.clean-image-wrapper{
+  position:relative;
+  width:100%;
+  max-width:min(80vh,1080px);
+  aspect-ratio:1/1;
+  background:#fff;
+  border-radius:var(--radius-card);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.clean-view-stage img{
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  transition:transform .15s ease-out;
+  user-select:none;
+}
+
+.btn-nav-floating{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(0,54,91,.7);
+  color:#fff;
+  border:1.5px solid var(--azul-300);
+  width:52px;
+  height:52px;
+  padding:0;
+  border-radius:50%;
+  z-index:2015;
+}
+.btn-nav-floating:hover{ background:var(--azul); border-color:var(--azul-200); transform:translateY(-50%) scale(1.06); }
+.btn-nav-floating .lucide{ width:22px; height:22px; }
+.btn-nav-floating.prev{ left:28px; }
+.btn-nav-floating.next{ right:28px; }
+
+.btn-zoom-trigger{
+  position:absolute;
+  bottom:14px;
+  right:14px;
+  background:rgba(26,26,26,.8);
+  color:#fff;
+  border:1.5px solid var(--azul-300);
+  padding:6px 12px;
+  font-size:12px;
+  border-radius:20px;
+  z-index:2012;
+}
+.btn-zoom-trigger:hover{ background:var(--azul); }
+
+/* ===== STATUS ===== */
+#statusZip{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--azul);
+  color:#fff;
+  font-family:'Oswald',sans-serif;
+  font-weight:500;
+  font-size:13px;
+  letter-spacing:.04em;
+  padding:12px 18px;
+  border-radius:var(--radius-ctrl);
+  display:none;
+  align-items:center;
+  gap:10px;
+  z-index:999;
+  box-shadow:0 8px 24px rgba(0,0,0,.14);
+}
+.spinner{ width:18px; height:18px; border:3px solid var(--azul-300); border-top-color:#fff; border-radius:50%; animation:spin 1s linear infinite; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+@media(max-width:768px){
+  .header{ padding:14px 16px; }
+  .main-container{ padding:0 16px; }
+  .controls-bar{ flex-direction:column; align-items:stretch; }
+  .action-group{ flex-direction:column; }
+  .controls-bar button{ width:100%; }
+  .brand{ flex-direction:column; align-items:flex-start; gap:10px; }
+  .brand .divisor{ display:none; }
+  .brand .logo svg{ height:40px; }
+  .btn-nav-floating{ width:44px; height:44px; }
+  .btn-nav-floating.prev{ left:10px; }
+  .btn-nav-floating.next{ right:10px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-container">
+    <div class="brand">
+      <div class="logo" aria-label="Lojas 2001">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="46 49 285 99" role="img">
+          <path fill="#EC3237" d="M122.38,122.4,97.92,146.86H55a6,6,0,0,1-6-6V97.94L73.47,73.46V122.4Z"/>
+          <path fill="#006CB5" d="M85.69,49,73.47,61.22,49,85.69V55a6,6,0,0,1,6-6Z"/>
+          <path fill="#006CB5" d="M146.85,55V85.71L122.38,61.23,110.15,49h30.7A6,6,0,0,1,146.85,55Z"/>
+          <path fill="#006CB5" d="M146.85,110.17v30.69a6,6,0,0,1-6,6h-30.7l12.23-12.23,12.24-12.23Z"/>
+          <polygon fill="#EC3237" points="146.85 97.94 122.39 122.4 122.38 73.46 146.85 97.94"/>
+          <path fill="#EC3237" d="M171.32,134.63v-9.87l17.83-27.42q2-3.07,3.76-5.88a33.28,33.28,0,0,0,2.89-5.75,17.21,17.21,0,0,0,1.13-6.29A9.05,9.05,0,0,0,195.58,74a4.55,4.55,0,0,0-3.9-1.86,5.52,5.52,0,0,0-4.16,1.5,8,8,0,0,0-2,3.93A24.77,24.77,0,0,0,185,83v3.44H171.32V82.77a30.82,30.82,0,0,1,2-11.58,16.56,16.56,0,0,1,6.42-7.92q4.4-2.85,11.54-2.85,9.69,0,14.57,5.07t4.89,14.2a23.78,23.78,0,0,1-1.36,8.19,36.06,36.06,0,0,1-3.57,7.24c-1.48,2.33-3.07,4.73-4.75,7.2L187,123.59h21.81v11Z"/>
+          <path fill="#EC3237" d="M233.5,135.89a20.35,20.35,0,0,1-11-2.71,16.91,16.91,0,0,1-6.51-7.47,26.13,26.13,0,0,1-2.17-11V81.87a28.3,28.3,0,0,1,2.08-11.27A16.28,16.28,0,0,1,222.36,63q4.35-2.72,11.14-2.71a20.27,20.27,0,0,1,11,2.71,16.32,16.32,0,0,1,6.38,7.56A28.3,28.3,0,0,1,253,81.87v32.85a26.13,26.13,0,0,1-2.17,11,16.87,16.87,0,0,1-6.52,7.47A19.92,19.92,0,0,1,233.5,135.89Zm0-12.3a4,4,0,0,0,3.52-1.54,8.77,8.77,0,0,0,1.45-3.67,23.61,23.61,0,0,0,.36-3.93V82.14a29.09,29.09,0,0,0-.31-4.17,8.8,8.8,0,0,0-1.4-3.75,4.08,4.08,0,0,0-3.62-1.59,4.19,4.19,0,0,0-3.67,1.59A8.36,8.36,0,0,0,228.38,78a29.09,29.09,0,0,0-.31,4.17v32.31a23.61,23.61,0,0,0,.36,3.93,8.14,8.14,0,0,0,1.54,3.67A4.17,4.17,0,0,0,233.5,123.59Z"/>
+          <path fill="#EC3237" d="M278.11,135.89a20.34,20.34,0,0,1-10.95-2.71,16.85,16.85,0,0,1-6.51-7.47,26.13,26.13,0,0,1-2.18-11V81.87a28.47,28.47,0,0,1,2.08-11.27A16.25,16.25,0,0,1,267,63q4.35-2.72,11.13-2.71t11,2.71a16.38,16.38,0,0,1,6.38,7.56,28.3,28.3,0,0,1,2.08,11.27v32.85a26.13,26.13,0,0,1-2.17,11,16.87,16.87,0,0,1-6.52,7.47A19.93,19.93,0,0,1,278.11,135.89Zm0-12.3a4,4,0,0,0,3.53-1.54,8.77,8.77,0,0,0,1.45-3.67,23.61,23.61,0,0,0,.36-3.93V82.14a27.76,27.76,0,0,0-.32-4.17,8.67,8.67,0,0,0-1.4-3.75,4.06,4.06,0,0,0-3.62-1.59,4.17,4.17,0,0,0-3.66,1.59A8.36,8.36,0,0,0,273,78a29.14,29.14,0,0,0-.32,4.17v32.31a23.61,23.61,0,0,0,.36,3.93,8.25,8.25,0,0,0,1.54,3.67A4.19,4.19,0,0,0,278.11,123.59Z"/>
+          <path fill="#EC3237" d="M310.87,134.63V75.8a15.07,15.07,0,0,1-2.21,1l-3,1.09c-1.08.39-2.11.75-3.07,1.08s-1.72.62-2.27.86V69.47l3-1.45c1.23-.6,2.54-1.27,3.93-2a41,41,0,0,0,3.94-2.35A17.11,17.11,0,0,0,314,61.32h10.86v73.31Z"/>
+        </svg>
+      </div>
+      <div class="divisor"></div>
+      <div class="brand-text">
+        <h1>Imagens Lojas 2001</h1>
+        <p>Validador de padrão &amp; otimizador de imagens</p>
+      </div>
+    </div>
+    <div class="active-configs">
+      <div class="config-badge">Fundo: <span>Branco puro (1080x1080)</span></div>
+      <div class="config-badge">Formato: <span>Exclusivo PNG</span></div>
+      <div class="config-badge">Produto: <span>Fixo 750x750</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="main-container">
+  <div class="workspace">
+    <div class="kicker"><i data-lucide="images"></i> Importar imagens</div>
+
+    <label class="upload-box" id="dropzone" for="upload">
+      <span class="upload-icon"><i data-lucide="upload-cloud"></i></span>
+      <h2>Arraste suas imagens aqui</h2>
+      <p>Padronização unificada: todos os produtos serão ajustados proporcionalmente para ocupar exatamente 750x750 pixels dentro da tela.</p>
+    </label>
+
+    <input type="file" id="upload" multiple accept="image/*" style="display:none;">
+
+    <div class="controls-bar">
+      <div class="action-group">
+        <button class="btn-secondary" onclick="document.getElementById('upload').click()">
+          <i data-lucide="folder-plus"></i> Adicionar imagens
+        </button>
+        <button class="btn-secondary" onclick="selectTargetFolder()">
+          <i data-lucide="folder-output"></i> Enviar para...
+        </button>
+      </div>
+
+      <div class="folder-status" id="folderStatus">
+        Destino: <em>Padrão (gera ZIP estruturado)</em>
+      </div>
+
+      <div class="action-group">
+        <button class="btn-danger" onclick="clearAll()"><i data-lucide="trash-2"></i> Limpar galeria</button>
+        <button class="btn-primary" onclick="downloadAll()"><i data-lucide="package-check"></i> Processar e salvar tudo</button>
+      </div>
+    </div>
+  </div>
+
+  <section class="gallery-section">
+    <div class="section-title" id="gallery-title" style="display:none;">Monitoramento de produtos agrupados</div>
+    <div id="gallery-container"></div>
+    <div class="empty-state" id="empty">
+      <i data-lucide="image"></i>
+      <div class="t">Nenhuma imagem adicionada</div>
+      <div>Adicione imagens para monitoramento ou processamento.</div>
+    </div>
+  </section>
+</main>
+
+<div class="clean-view-overlay" id="cleanViewOverlay">
+  <div class="clean-top-indicator" id="cleanCounter">1/1</div>
+  <button class="btn-clean-close-top" onclick="closeCleanView()" title="Fechar (Esc)"><i data-lucide="x"></i></button>
+
+  <button class="btn-nav-floating prev" id="btn-prev-floating" onclick="navigateGallery(-1)" title="Anterior"><i data-lucide="chevron-left"></i></button>
+  <button class="btn-nav-floating next" id="btn-next-floating" onclick="navigateGallery(1)" title="Próxima"><i data-lucide="chevron-right"></i></button>
+
+  <div class="clean-view-stage" id="cleanViewStage">
+    <div class="clean-image-wrapper" id="cleanImageWrapper">
+      <img src="" id="cleanViewImage" alt="Visualização otimizada">
+      <button class="btn-zoom-trigger" onclick="toggleQuickZoom(event)"><i data-lucide="zoom-in"></i> Zoom</button>
+    </div>
+  </div>
+</div>
+
+<div id="statusZip"><span class="spinner"></span><span id="statusZipText">Processando e salvando arquivos...</span></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+const upload = document.getElementById("upload");
+const galleryContainer = document.getElementById("gallery-container");
+const empty = document.getElementById("empty");
+const galleryTitle = document.getElementById("gallery-title");
+const dropzone = document.getElementById("dropzone");
+const statusZip = document.getElementById("statusZip");
+const statusZipText = document.getElementById("statusZipText");
+const folderStatus = document.getElementById("folderStatus");
+
+const cleanViewOverlay = document.getElementById("cleanViewOverlay");
+const cleanViewStage = document.getElementById("cleanViewStage");
+const cleanViewImage = document.getElementById("cleanViewImage");
+const cleanCounter = document.getElementById("cleanCounter");
+const btnPrevFloating = document.getElementById("btn-prev-floating");
+const btnNextFloating = document.getElementById("btn-next-floating");
+
+let processedImages = [];
+let directoryHandle = null;
+let zoomScale = 1;
+let globalGalleryQueue = [];
+let currentGlobalQueueIndex = 0;
+let touchStartX = 0;
+let touchEndX = 0;
+
+function atualizarIcones() {
+  if (window.lucide) lucide.createIcons();
+}
+
+function mostrarStatus(texto) {
+  statusZipText.innerText = texto;
+  statusZip.style.display = "flex";
+}
+
+function ocultarStatus() {
+  statusZip.style.display = "none";
+}
+
+function extrairCodigo(nomeArquivo) {
+  const nomeSemExtensao = nomeArquivo.replace(/\.[^/.]+$/, "");
+  if (nomeSemExtensao.includes("-")) {
+    return nomeSemExtensao.split("-")[0].trim();
+  }
+  const correspondencia = nomeSemExtensao.match(/\d+/);
+  return correspondencia ? correspondencia[0] : nomeSemExtensao;
+}
+
+function extrairSufixoOriginal(nomeArquivo) {
+  const nomeSemExtensao = nomeArquivo.replace(/\.[^/.]+$/, "");
+  if (nomeSemExtensao.includes("-")) {
+    const partes = nomeSemExtensao.split("-");
+    const sufixo = partes[partes.length - 1].trim();
+    if (!isNaN(sufixo) && sufixo !== "") {
+      return parseInt(sufixo, 10);
+    }
+  }
+  return null;
+}
+
+async function obterProximoSufixoLocal(subFolderHandle, codigo, sufixoSugerido) {
+  if (sufixoSugerido !== null) {
+    try {
+      await subFolderHandle.getFileHandle(`${codigo}-${sufixoSugerido}.png`);
+    } catch (err) {
+      return sufixoSugerido;
+    }
+  }
+  let contador = sufixoSugerido !== null ? sufixoSugerido + 1 : 1;
+  while (true) {
+    try {
+      await subFolderHandle.getFileHandle(`${codigo}-${contador}.png`);
+      contador++;
+    } catch (err) {
+      return contador;
+    }
+  }
+}
+
+async function selectTargetFolder() {
+  try {
+    directoryHandle = await window.showDirectoryPicker({ mode: "readwrite" });
+    folderStatus.innerHTML = `Destino: <strong><i data-lucide="folder-check"></i> ${directoryHandle.name}</strong>`;
+    atualizarIcones();
+  } catch (err) {
+    console.log("Seleção de pasta cancelada.");
+  }
+}
+
+["dragenter","dragover"].forEach(eventName => {
+  dropzone.addEventListener(eventName,(e)=>{ e.preventDefault(); e.stopPropagation(); dropzone.classList.add("active"); });
+});
+["dragleave","drop"].forEach(eventName => {
+  dropzone.addEventListener(eventName,(e)=>{ e.preventDefault(); e.stopPropagation(); dropzone.classList.remove("active"); });
+});
+dropzone.addEventListener("drop",(e)=>{
+  const files = [...e.dataTransfer.files].filter(file => file.type.startsWith("image/"));
+  handleFiles(files);
+});
+upload.addEventListener("change",(e)=>{ handleFiles([...e.target.files]); });
+
+function handleFiles(files){
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = function(event){
+      const img = new Image();
+      img.onload = function(){
+        processImage(img, file.name);
+      }
+      img.src = event.target.result;
+    }
+    reader.readAsDataURL(file);
+  });
+}
+
+// Analisador Inteligente de Objeto: Varre os limites reais e ignora fundos/margens artificiais
+function obterCaixaDelimitadoraObjeto(img) {
+  const tempCanvas = document.createElement("canvas");
+  const tempCtx = tempCanvas.getContext("2d");
+  tempCanvas.width = img.width;
+  tempCanvas.height = img.height;
+  tempCtx.drawImage(img, 0, 0);
+
+  let imgData;
+  try {
+    imgData = tempCtx.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+  } catch(e) {
+    return { x: 0, y: 0, w: img.width, h: img.height };
+  }
+
+  const data = imgData.data;
+  let minX = tempCanvas.width, minY = tempCanvas.height, maxX = 0, maxY = 0;
+  let encontrouPixelAtivo = false;
+
+  for (let y = 0; y < tempCanvas.height; y++) {
+    for (let x = 0; x < tempCanvas.width; x++) {
+      const idx = (y * tempCanvas.width + x) * 4;
+      const r = data[idx];
+      const g = data[idx+1];
+      const b = data[idx+2];
+      const a = data[idx+3];
+
+      const ehFundoVazio = (a < 10) || (r > 250 && g > 250 && b > 250);
+
+      if (!ehFundoVazio) {
+        if (x < minX) minX = x;
+        if (x > maxX) maxX = x;
+        if (y < minY) minY = y;
+        if (y > maxY) maxY = y;
+        encontrouPixelAtivo = true;
+      }
+    }
+  }
+
+  if (!encontrouPixelAtivo) {
+    return { x: 0, y: 0, w: img.width, h: img.height };
+  }
+
+  return {
+    x: minX,
+    y: minY,
+    w: (maxX - minX) + 1,
+    h: (maxY - minY) + 1
+  };
+}
+
+function processImage(img, fileName){
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = 1080;
+  canvas.height = 1080;
+
+  // Renderiza fundo plano branco puro padronizado
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Recorta virtualmente o objeto real ativo descartando as margens
+  const box = obterCaixaDelimitadoraObjeto(img);
+
+  // REGRA DE ALVO UNIFICADA: Todos os produtos agora miram estritamente em 750px
+  const areaAlvoProduto = 750;
+
+  // Calcula escala mantendo proporção original do produto intacta (seja para ampliar ou reduzir)
+  const escala = Math.min(areaAlvoProduto / box.w, areaAlvoProduto / box.h);
+
+  const larguraProdutoAjustada = box.w * escala;
+  const alturaProdutoAjustada = box.h * escala;
+
+  // Garante centralização cartesiana perfeita de eixos X e Y no plano 1080x1080
+  const xCentralizado = (canvas.width - larguraProdutoAjustada) / 2;
+  const yCentralizado = (canvas.height - alturaProdutoAjustada) / 2;
+
+  // Ativa filtros de alta fidelidade para evitar serrilhados ou borrões
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+
+  ctx.drawImage(
+    img,
+    box.x, box.y, box.w, box.h,
+    xCentralizado, yCentralizado, larguraProdutoAjustada, alturaProdutoAjustada
+  );
+
+  const finalImageUrl = canvas.toDataURL("image/png", 1.0);
+  const codigoProduto = extrairCodigo(fileName);
+  const sufixoOriginal = extrairSufixoOriginal(fileName);
+
+  canvas.toBlob(function(blob) {
+    processedImages.push({
+      id: Date.now() + Math.random(),
+      codigo: codigoProduto,
+      sufixoOriginal: sufixoOriginal !== null ? sufixoOriginal : 99,
+      fileBlob: blob,
+      url: finalImageUrl,
+      nomeOriginal: fileName,
+      tamanhoFinal: areaAlvoProduto
+    });
+    renderGallery();
+  }, "image/png", 1.0);
+}
+
+function montarCard(item, exibicaoSufixo) {
+  const card = document.createElement("div");
+  card.className = "card";
+  const nomeArquivo = `${item.codigo}${exibicaoSufixo}.png`;
+  card.innerHTML = `
+    <div class="card-preview" onclick="openCleanViewUnified('${item.id}')" title="Clique para expandir">
+      <img src="${item.url}" alt="${item.codigo}">
+    </div>
+    <div class="card-footer">
+      <div>
+        <div class="file-name" title="${nomeArquivo}"><i data-lucide="file-image"></i> ${nomeArquivo}</div>
+      </div>
+      <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+        <span class="badge badge-ok badge-hd"><i data-lucide="check"></i> Padronizado em ${item.tamanhoFinal}px</span>
+        <button class="btn-secondary btn-download-item" onclick="downloadSingleItem('${item.id}')"><i data-lucide="download"></i> Salvar item</button>
+      </div>
+    </div>
+  `;
+  return card;
+}
+
+function renderGallery() {
+  galleryContainer.innerHTML = "";
+  globalGalleryQueue = [];
+
+  if (processedImages.length === 0) {
+    empty.style.display = "block";
+    galleryTitle.style.display = "none";
+    atualizarIcones();
+    return;
+  }
+
+  empty.style.display = "none";
+  galleryTitle.style.display = "block";
+
+  const grupos = {};
+  processedImages.forEach(item => {
+    if (!grupos[item.codigo]) {
+      grupos[item.codigo] = [];
+    }
+    grupos[item.codigo].push(item);
+  });
+
+  const codigosSolitarios = [];
+  const codigosMultiplos = [];
+
+  Object.keys(grupos).forEach(codigo => {
+    if (grupos[codigo].length === 1) {
+      codigosSolitarios.push(codigo);
+    } else {
+      codigosMultiplos.push(codigo);
+    }
+  });
+
+  codigosMultiplos.sort();
+  codigosSolitarios.sort();
+
+  codigosMultiplos.forEach(codigo => {
+    const listaImagens = grupos[codigo];
+    listaImagens.sort((a, b) => a.sufixoOriginal - b.sufixoOriginal);
+    listaImagens.forEach(item => {
+      globalGalleryQueue.push(item);
+    });
+  });
+
+  codigosSolitarios.forEach(codigo => {
+    globalGalleryQueue.push(grupos[codigo][0]);
+  });
+
+  codigosMultiplos.forEach(codigo => {
+    const listaImagens = grupos[codigo];
+    const groupBlock = document.createElement("div");
+    groupBlock.className = "product-group-block";
+    groupBlock.innerHTML = `
+      <div class="product-group-header">
+        <div class="product-group-title"><i data-lucide="package"></i> Produto coletivo: <b>${codigo}</b></div>
+        <div class="badge badge-azul">${listaImagens.length} imagens sequenciais</div>
+      </div>
+      <div class="gallery-grid" id="grid-${codigo}"></div>
+    `;
+    galleryContainer.appendChild(groupBlock);
+    const gridElement = document.getElementById(`grid-${codigo}`);
+
+    listaImagens.forEach((item) => {
+      const exibicaoSufixo = item.sufixoOriginal !== 99 ? `-${item.sufixoOriginal}` : "";
+      gridElement.appendChild(montarCard(item, exibicaoSufixo));
+    });
+  });
+
+  if (codigosSolitarios.length > 0) {
+    const singleContainer = document.createElement("div");
+    singleContainer.className = "single-products-container";
+    singleContainer.innerHTML = `
+      <div class="single-products-title"><i data-lucide="package"></i> Produtos com imagem única</div>
+      <div class="gallery-grid" id="grid-produtos-solitarios"></div>
+    `;
+    galleryContainer.appendChild(singleContainer);
+    const gridSolitarios = document.getElementById("grid-produtos-solitarios");
+
+    codigosSolitarios.forEach(codigo => {
+      const item = grupos[codigo][0];
+      const exibicaoSufixo = item.sufixoOriginal !== 99 ? `-${item.sufixoOriginal}` : "-1";
+      gridSolitarios.appendChild(montarCard(item, exibicaoSufixo));
+    });
+  }
+
+  atualizarIcones();
+}
+
+function openCleanViewUnified(itemId) {
+  const indexEncontrado = globalGalleryQueue.findIndex(img => img.id.toString() === itemId.toString());
+  if (indexEncontrado === -1) return;
+  currentGlobalQueueIndex = indexEncontrado;
+
+  if (globalGalleryQueue.length <= 1) {
+    btnPrevFloating.style.display = "none";
+    btnNextFloating.style.display = "none";
+    cleanCounter.style.display = "none";
+  } else {
+    btnPrevFloating.style.display = "flex";
+    btnNextFloating.style.display = "flex";
+    cleanCounter.style.display = "block";
+  }
+  updateCleanViewImage();
+  zoomScale = 1;
+  cleanViewImage.style.transform = `scale(${zoomScale})`;
+  cleanViewOverlay.classList.add("active");
+}
+
+function updateCleanViewImage() {
+  if (globalGalleryQueue.length === 0) return;
+  const itemAtivo = globalGalleryQueue[currentGlobalQueueIndex];
+  cleanViewImage.src = itemAtivo.url;
+  cleanCounter.innerText = `${currentGlobalQueueIndex + 1}/${globalGalleryQueue.length}`;
+}
+
+function navigateGallery(direction) {
+  if (globalGalleryQueue.length <= 1) return;
+  currentGlobalQueueIndex += direction;
+  if (currentGlobalQueueIndex < 0) {
+    currentGlobalQueueIndex = globalGalleryQueue.length - 1;
+  } else if (currentGlobalQueueIndex >= globalGalleryQueue.length) {
+    currentGlobalQueueIndex = 0;
+  }
+  zoomScale = 1;
+  cleanViewImage.style.transform = `scale(${zoomScale})`;
+  updateCleanViewImage();
+}
+
+function toggleQuickZoom(event) {
+  event.stopPropagation();
+  zoomScale = (zoomScale === 1) ? 2 : 1;
+  cleanViewImage.style.transform = `scale(${zoomScale})`;
+}
+
+function closeCleanView() {
+  cleanViewOverlay.classList.remove("active");
+}
+
+function applyZoom(amount) {
+  zoomScale = Math.min(Math.max(zoomScale + amount, 0.5), 4);
+  cleanViewImage.style.transform = `scale(${zoomScale})`;
+}
+
+window.addEventListener("keydown", (e) => {
+  if (!cleanViewOverlay.classList.contains("active")) return;
+  if (e.key === "ArrowRight") { navigateGallery(1); }
+  else if (e.key === "ArrowLeft") { navigateGallery(-1); }
+  else if (e.key === "Escape") { closeCleanView(); }
+});
+
+cleanViewStage.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+cleanViewStage.addEventListener("touchend", (e) => { touchEndX = e.changedTouches[0].screenX; handleSwipeGesture(); }, { passive: true });
+
+function handleSwipeGesture() {
+  const limiteDisparo = 60;
+  if (touchStartX - touchEndX > limiteDisparo) { navigateGallery(1); }
+  else if (touchEndX - touchStartX > limiteDisparo) { navigateGallery(-1); }
+}
+
+cleanViewStage.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  const delta = e.deltaY < 0 ? 0.15 : -0.15;
+  applyZoom(delta);
+}, { passive: false });
+
+cleanViewOverlay.addEventListener("click", (e) => {
+  if (e.target === cleanViewOverlay || e.target === cleanViewStage) { closeCleanView(); }
+});
+
+async function downloadSingleItem(uniqueId) {
+  const index = processedImages.findIndex(img => img.id.toString() === uniqueId.toString());
+  if (index === -1) return;
+  const item = processedImages[index];
+
+  if (directoryHandle) {
+    try {
+      const subFolderHandle = await directoryHandle.getDirectoryHandle(item.codigo, { create: true });
+      const sufixo = await obterProximoSufixoLocal(subFolderHandle, item.codigo, item.sufixoOriginal !== 99 ? item.sufixoOriginal : null);
+      const finalName = `${item.codigo}-${sufixo}.png`;
+      const fileHandle = await subFolderHandle.getFileHandle(finalName, { create: true });
+      const writable = await fileHandle.createWritable();
+      await writable.write(item.fileBlob);
+      await writable.close();
+
+      URL.revokeObjectURL(item.url);
+      processedImages.splice(index, 1);
+      renderGallery();
+    } catch (err) {
+      alert("Erro ao gravar na pasta local.");
+    }
+  } else {
+    const a = document.createElement("a");
+    a.href = item.url;
+    a.download = `${item.codigo}-${item.sufixoOriginal !== 99 ? item.sufixoOriginal : '1'}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    URL.revokeObjectURL(item.url);
+    processedImages.splice(index, 1);
+    renderGallery();
+  }
+}
+
+async function downloadAll() {
+  if (processedImages.length === 0) {
+    alert("Nenhuma imagem adicionada.");
+    return;
+  }
+
+  if (directoryHandle) {
+    mostrarStatus("Organizando pastas locais e salvando...");
+
+    for (const img of processedImages) {
+      try {
+        const subFolderHandle = await directoryHandle.getDirectoryHandle(img.codigo, { create: true });
+        const sufixo = await obterProximoSufixoLocal(subFolderHandle, img.codigo, img.sufixoOriginal !== 99 ? img.sufixoOriginal : null);
+        const finalName = `${img.codigo}-${sufixo}.png`;
+        const fileHandle = await subFolderHandle.getFileHandle(finalName, { create: true });
+        const writable = await fileHandle.createWritable();
+        await writable.write(img.fileBlob);
+        await writable.close();
+      } catch (e) {
+        console.error("Erro no processamento da pasta", e);
+      }
+    }
+    ocultarStatus();
+    alert("Lote concluído com sucesso!");
+    clearAll();
+  } else {
+    mostrarStatus("Criando arquivo comprimido ZIP...");
+
+    const zip = new JSZip();
+    const contadorZip = {};
+    processedImages.sort((a, b) => a.sufixoOriginal - b.sufixoOriginal);
+
+    for (const img of processedImages) {
+      if (!contadorZip[img.codigo]) {
+        contadorZip[img.codigo] = img.sufixoOriginal !== 99 ? img.sufixoOriginal : 1;
+      } else {
+        contadorZip[img.codigo]++;
+      }
+      const sequencia = contadorZip[img.codigo];
+      zip.file(`${img.codigo}/${img.codigo}-${sequencia}.png`, img.fileBlob);
+    }
+
+    const content = await zip.generateAsync({type: "blob"});
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(content);
+    link.download = "lojas2001-lote-agrupado.zip";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    ocultarStatus();
+    clearAll();
+  }
+}
+
+function clearAll(){
+  processedImages.forEach(img => {
+    if(img.url && img.url.startsWith("blob:")) {
+      URL.revokeObjectURL(img.url);
+    }
+  });
+  processedImages = [];
+  globalGalleryQueue = [];
+  renderGallery();
+  upload.value = "";
+}
+
+atualizarIcones();
+</script>
+
+</body>
+</html>
