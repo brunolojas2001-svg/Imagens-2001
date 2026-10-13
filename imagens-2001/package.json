@@ -1,9 +1,0 @@
-{
-  "name": "imagens-2001",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Imagens Lojas 2001 - padronização de fotos de produto em 1080x1080 com fundo branco, agrupamento por código e salvamento em pasta local ou ZIP.",
-  "scripts": {
-    "dev": "npx --yes serve public -l 3000"
-  }
-}
